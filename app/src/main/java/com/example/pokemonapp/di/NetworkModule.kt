@@ -26,7 +26,7 @@ object NetworkModule {
         .build()
 
     @Provides
-    fun providesKatService(
+    fun providesPokeService(
         retrofit: Retrofit
     ) : PokeService = retrofit.create(PokeService::class.java)
 }
