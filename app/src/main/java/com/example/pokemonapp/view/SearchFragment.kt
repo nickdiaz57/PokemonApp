@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import com.example.pokemonapp.databinding.FragmentSearchBinding
 
 class SearchFragment : Fragment() {
-
+//settings fragment equivalent
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
 

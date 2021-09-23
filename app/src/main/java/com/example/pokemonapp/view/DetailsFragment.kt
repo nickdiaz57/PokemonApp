@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import com.example.pokemonapp.databinding.FragmentDetailsBinding
 
 class DetailsFragment : Fragment() {
-
+//more info about a particular card, option to favorite a card
     private var _binding: FragmentDetailsBinding? = null
     private val binding get() = _binding!!
 

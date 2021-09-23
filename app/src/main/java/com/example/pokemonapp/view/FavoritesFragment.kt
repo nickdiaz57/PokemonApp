@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import com.example.pokemonapp.databinding.FragmentFavoritesBinding
 
 class FavoritesFragment : Fragment() {
-
+//displays cards the user has favorited and saved in db
     private var _binding: FragmentFavoritesBinding? = null
     private val binding get() = _binding!!
 
