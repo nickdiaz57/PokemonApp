@@ -1,6 +1,7 @@
 package com.example.pokemonapp.repo.remote
 
 import com.example.pokemonapp.model.Card
+import com.example.pokemonapp.model.CardResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Headers
@@ -14,5 +15,5 @@ interface PokeService {
 //        @Query("q") q: String,
         @Query ("page") page: Int,
         @Query ("pageSize") pageSize: Int
-    ) : Response<List<Card>>
+    ) : Response<CardResponse>
 }
