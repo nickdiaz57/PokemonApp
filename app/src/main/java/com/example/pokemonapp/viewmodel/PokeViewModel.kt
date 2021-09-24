@@ -22,7 +22,7 @@ class PokeViewModel @Inject constructor(
 
     fun fetchCards() {
         viewModelScope.launch {
-            pokeRepo.getCards(1, 1).collect { cards ->
+            pokeRepo.getCards(1, 10).collect { cards ->
                 _cardList.postValue(cards)
             }
         }
