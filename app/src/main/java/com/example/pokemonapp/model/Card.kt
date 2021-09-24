@@ -13,6 +13,7 @@ import kotlinx.parcelize.Parcelize
 data class Card(
     @PrimaryKey val id: String?,
     val evolvesFrom: String?,
+    val evolvesTo: List<String>?,
     val hp: String?,
     val images: Images?,
     val name: String?,

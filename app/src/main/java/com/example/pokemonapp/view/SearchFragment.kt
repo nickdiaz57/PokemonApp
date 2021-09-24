@@ -18,7 +18,11 @@ class SearchFragment : Fragment() {
     ) = FragmentSearchBinding.inflate(inflater, container, false).also {
         _binding = it
     }.root
+    //on submit get the query from the text box
+    //query is sent to api formatted like q=name:char*
+    //prepend 'q=name:' and append '*' to query from text box and submit
 
+    //allow ability to switch between search by pokemon (cards) and search by card sets (sets) endpoints
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

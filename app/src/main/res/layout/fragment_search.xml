@@ -7,13 +7,32 @@
     android:padding="8dp"
     tools:context="com.example.pokemonapp.view.SearchFragment">
 
-    <TextView
-        android:id="@+id/textView"
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/label_name_entry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Search"
+        android:labelFor="@id/name_entry"
+        android:text="Search by Name"
+        android:textAppearance="?attr/textAppearanceHeadline5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/name_entry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/label_name_entry"
+        app:layout_constraintStart_toStartOf="parent"
+        android:inputType="text"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:visibility="visible" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

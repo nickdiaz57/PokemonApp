@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.example.pokemonapp.databinding.FragmentDetailsBinding
@@ -30,16 +31,18 @@ class DetailsFragment : Fragment() {
     }
 
     private fun initView() = with(binding) {
-        Log.e("Details Fragment", "$args")
         val card = args.selectedCard
+        (activity as AppCompatActivity).supportActionBar?.title = card.name
         card.images?.large?.let { ivDetails.loadWithGlide(it) }
         tvDetailsInfo.text = card.name
+
     }
-    //put the random card button in the action bar
+    //put the random card button and name of selected card in the action bar
     //if no image data or no card selected, display placeholder image
 
     override fun onDestroyView() {
         super.onDestroyView()
+        (activity as AppCompatActivity).supportActionBar?.title = "Pokemon App"
         _binding = null
     }
 }
