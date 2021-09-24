@@ -1,11 +1,14 @@
 package com.example.pokemonapp.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.pokemonapp.databinding.ItemCardBinding
 import com.example.pokemonapp.model.Card
 import com.example.pokemonapp.util.loadWithGlide
+import com.example.pokemonapp.view.DisplayFragmentDirections
 
 class CardAdapter(
     private val cardList: MutableList<Card> = mutableListOf()
@@ -40,8 +43,12 @@ class CardAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun loadCard(card: Card) = with(binding) {
-//            ivCard.loadWithGlide(card.images.small)
             card.images?.small?.let { ivCard.loadWithGlide(it) }
+            ivCard.setOnClickListener{
+                Navigation.findNavController(it).navigate(
+                    DisplayFragmentDirections.actionDisplayFragmentToDetailsFragment(card)
+                )
+            }
             tvCardName.text = card.name
         }
 

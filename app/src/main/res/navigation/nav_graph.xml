@@ -24,7 +24,11 @@
         android:id="@+id/detailsFragment"
         android:name="com.example.pokemonapp.view.DetailsFragment"
         android:label="fragment_details"
-        tools:layout="@layout/fragment_details" />
+        tools:layout="@layout/fragment_details" >
+        <argument
+            android:name="selectedCard"
+            app:argType="com.example.pokemonapp.model.Card" />
+    </fragment>
     <fragment
         android:id="@+id/favoritesFragment"
         android:name="com.example.pokemonapp.view.FavoritesFragment"
