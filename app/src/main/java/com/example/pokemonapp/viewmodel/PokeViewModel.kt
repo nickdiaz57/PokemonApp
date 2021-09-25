@@ -11,6 +11,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlin.random.Random
 
 @HiltViewModel
 class PokeViewModel @Inject constructor(
@@ -22,9 +23,18 @@ class PokeViewModel @Inject constructor(
 
     fun fetchCards() {
         viewModelScope.launch {
-            pokeRepo.getCards(1, 1).collect { cards ->
+            pokeRepo.getCards(1, 10).collect { cards ->
                 _cardList.postValue(cards)
             }
         }
     }
+
+//    fun fetchRandomCard() {
+//        val counter = Random.nextInt(1, 13935)
+//        viewModelScope.launch {
+//            pokeRepo.getCards(counter, 1).collect { card ->
+//                _cardList.postValue(card)
+//            }
+//        }
+//    }
 }
