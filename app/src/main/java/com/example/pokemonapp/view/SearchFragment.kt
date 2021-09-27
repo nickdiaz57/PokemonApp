@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.pokemonapp.databinding.FragmentSearchBinding
+import com.example.pokemonapp.model.Queries
 import com.example.pokemonapp.viewmodel.PokeViewModel
 
 class SearchFragment : Fragment() {
@@ -32,20 +33,26 @@ class SearchFragment : Fragment() {
 
     private fun initView() = with(binding) {
         btnSubmit.setOnClickListener{
-            val number = sliderCards.value.toInt()
-            pokeViewModel.fetchCards(getQuery(), number)
+            pokeViewModel.fetchCards(getQueries())
             findNavController().navigateUp()
         }
     }
-    //on submit get the query from the text box
-    //query is sent to api formatted like q=name:char*
-    //prepend 'q=name:' and append '*' to query from text box and submit
 
     //allow ability to switch between search by pokemon (cards) and search by card sets (sets) endpoints
 
-    private fun getQuery() = with(binding) {
-        return@with "name:" + nameEntry.text.toString() + "*"
+    private fun getNameInput() = with(binding) {
+        return@with "name:${nameEntry.text.toString()}*"
     }
+
+    private fun getNumber() = with(binding) {
+        return@with sliderCards.value.toInt()
+    }
+
+    private fun getQueries() = Queries(
+        searchQuery = getNameInput(),
+        page = pokeViewModel.queries?.page,
+        number = getNumber()
+    )
 
     override fun onDestroyView() {
         super.onDestroyView()
