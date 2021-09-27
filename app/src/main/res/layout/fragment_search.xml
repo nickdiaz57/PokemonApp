@@ -7,15 +7,51 @@
     android:padding="8dp"
     tools:context="com.example.pokemonapp.view.SearchFragment">
 
+<!--    endpoint-->
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/label_endpoint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:labelFor="@id/et_endpoint"
+        android:text="Search By: "
+        android:textAppearance="?attr/textAppearanceHeadline5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_endpoint"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/label_endpoint">
+
+        <AutoCompleteTextView
+            android:id="@+id/et_endpoint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+<!--    endpoint end-->
+
+<!--    search by name-->
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/card_name_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:constraint_referenced_ids="label_name_entry, name_entry, slider_cards, label_slider_cards"/>
+
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/label_name_entry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:labelFor="@id/name_entry"
         android:text="Search by Name"
+        android:layout_marginTop="10dp"
         android:textAppearance="?attr/textAppearanceHeadline5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/til_endpoint" />
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/name_entry"
         android:layout_width="match_parent"
@@ -24,6 +60,30 @@
         app:layout_constraintStart_toStartOf="parent"
         android:inputType="text"
         />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/label_slider_cards"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:labelFor="@id/slider_cards"
+        android:text="Number of Cards"
+        android:layout_marginTop="10dp"
+        android:textAppearance="?attr/textAppearanceHeadline5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/name_entry" />
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/slider_cards"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stepSize="1.0"
+        android:valueFrom="0.0"
+        android:valueTo="20.0"
+        app:layout_constraintTop_toBottomOf="@id/label_slider_cards" />
+<!--    search by name end-->
+
+<!--    search by set-->
+<!--    search by set end-->
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_submit"

@@ -35,10 +35,7 @@ class DetailsFragment : Fragment() {
         (activity as AppCompatActivity).supportActionBar?.title = card.name
         card.images?.large?.let { ivDetails.loadWithGlide(it) }
         tvDetailsInfo.text = card.name
-
     }
-    //put the random card button and name of selected card in the action bar
-    //if no image data or no card selected, display placeholder image
 
     override fun onDestroyView() {
         super.onDestroyView()

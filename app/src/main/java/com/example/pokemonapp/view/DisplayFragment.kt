@@ -8,9 +8,11 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.RecyclerView
 import com.example.pokemonapp.adapter.CardAdapter
 import com.example.pokemonapp.databinding.FragmentDisplayBinding
 import com.example.pokemonapp.model.Card
+import com.example.pokemonapp.util.PageAction
 import com.example.pokemonapp.viewmodel.PokeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -32,12 +34,19 @@ class DisplayFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        pokeViewModel.fetchCards()
+        initView()
         setupObserver()
     }
 
-    fun initView() = with(binding) {
-
+    private fun initView() = with(binding) {
+        rvList.adapter = cardAdapter
+        rvList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                if (!recyclerView.canScrollVertically(1) && dy > 0) {
+                    pokeViewModel.fetchCards(PageAction.NEXT)
+                }
+            }
+        })
     }
 
     private fun setupObserver() = with(pokeViewModel) {
@@ -47,7 +56,7 @@ class DisplayFragment : Fragment() {
     }
 
     private fun loadCards(cards: List<Card>) = with(binding.rvList) {
-        adapter = cardAdapter
+        if (pokeViewModel.currentPageAction == PageAction.FIRST) cardAdapter.clear()
         cardAdapter.updateList(cards)
     }
 
