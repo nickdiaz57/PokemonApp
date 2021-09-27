@@ -32,7 +32,6 @@ class DisplayFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        pokeViewModel.fetchCards()
         setupObserver()
     }
 
@@ -48,6 +47,7 @@ class DisplayFragment : Fragment() {
 
     private fun loadCards(cards: List<Card>) = with(binding.rvList) {
         adapter = cardAdapter
+        cardAdapter.clear()
         cardAdapter.updateList(cards)
     }
 

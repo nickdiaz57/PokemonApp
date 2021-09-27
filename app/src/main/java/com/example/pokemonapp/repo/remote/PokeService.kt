@@ -12,7 +12,7 @@ interface PokeService {
     @Headers("x-api-key: 75372df2-585d-49e5-84bf-a7e176ba9879")
     @GET("v2/cards")
     suspend fun getCards (
-//        @Query("q") q: String,
+        @Query("q") q: String,
         @Query ("page") page: Int,
         @Query ("pageSize") pageSize: Int
     ) : Response<CardResponse>

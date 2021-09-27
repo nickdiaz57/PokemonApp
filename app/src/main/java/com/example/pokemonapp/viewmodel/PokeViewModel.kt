@@ -21,9 +21,9 @@ class PokeViewModel @Inject constructor(
     private val _cardList = MutableLiveData<List<Card>>()
     val cardList: LiveData<List<Card>> get() = _cardList
 
-    fun fetchCards() {
+    fun fetchCards(query: String, number: Int) {
         viewModelScope.launch {
-            pokeRepo.getCards(1, 10).collect { cards ->
+            pokeRepo.getCards(query,1, number).collect { cards ->
                 _cardList.postValue(cards)
             }
         }

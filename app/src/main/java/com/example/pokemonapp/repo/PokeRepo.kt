@@ -6,7 +6,7 @@ import javax.inject.Inject
 
 class PokeRepo @Inject constructor(private val pokeService: PokeService) {
 
-    fun getCards(page: Int, pageSize: Int) = flow {
-        emit(pokeService.getCards(page, pageSize).body()!!.data)
+    fun getCards(searchQuery: String, page: Int, pageSize: Int) = flow {
+        emit(pokeService.getCards(searchQuery, page, pageSize).body()!!.data)
     }
 }
