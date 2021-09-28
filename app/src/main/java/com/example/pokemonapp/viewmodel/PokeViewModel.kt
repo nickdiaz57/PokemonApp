@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.pokemonapp.model.Card
 import com.example.pokemonapp.model.Queries
 import com.example.pokemonapp.repo.PokeRepo
+import com.example.pokemonapp.repo.local.dao.PokeDao
 import com.example.pokemonapp.util.PageAction
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
@@ -38,6 +39,12 @@ class PokeViewModel @Inject constructor(
             pokeRepo.getCards(queries).collect { cards ->
                 _cardList.postValue(cards)
             }
+        }
+    }
+
+    fun favoriteCard(card: Card) {
+        viewModelScope.launch {
+            pokeRepo.favoriteCard(card)
         }
     }
 
