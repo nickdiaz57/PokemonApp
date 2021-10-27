@@ -11,7 +11,7 @@ import kotlinx.parcelize.Parcelize
 @Entity(tableName = "poke_card_table")
 @JsonClass(generateAdapter = true)
 data class Card(
-    @PrimaryKey val id: String?,
+    @PrimaryKey val id: String,
     val evolvesFrom: String?,
     val evolvesTo: List<String>?,
     val hp: String?,
