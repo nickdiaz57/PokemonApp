@@ -19,6 +19,10 @@ class PokeConverters {
         return@lazy moshi.adapter<List<Int>>(type)
     }
 
+    private val imagesAdapter by lazy {
+        return@lazy moshi.adapter(Images::class.java)
+    }
+
     @TypeConverter
     fun stringListToString(list: List<String>?) : String {
         return stringListAdapter.toJson(list)
@@ -41,11 +45,11 @@ class PokeConverters {
 
     @TypeConverter
     fun imagesListToString(images: Images?) : String {
-        return moshi.adapter(Images::class.java).toJson(images)
+        return imagesAdapter.toJson(images)
     }
 
     @TypeConverter
     fun stringToImagesList(data: String) : Images? {
-        return moshi.adapter(Images::class.java).fromJson(data)
+        return imagesAdapter.fromJson(data)
     }
 }
